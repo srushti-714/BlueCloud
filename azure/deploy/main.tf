@@ -38,7 +38,10 @@ locals {
   admin_username            = "RTCAdmin"
   admin_password            = "Password123"
 }
-
+resource "azurerm_resource_group" "labvm-617678" {
+  name     = "labvm-617678"
+  location = "centralus"
+   }
 ##########################################################
 ## Create Resource group Network & subnets
 ##########################################################
@@ -47,17 +50,13 @@ module "network" {
   address_space       = var.address_space
   dns_servers         = var.dns_servers
   environment_name    = var.environment_name
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.myresourcegroup.name
   location            = var.location
   src_ip              = var.src_ip
   dcsubnet_prefix     = var.dcsubnet_prefix
   dcsubnet_name       = var.dcsubnet_name
   user1_subnet_name   = var.user1_subnet_name
   user1_subnet_prefix = var.user1_subnet_prefix
-}
-resource "azurerm_resource_group" "labvm-617678" {
-  name     = "labvm-617678"
-  location = "centralus"
 }
 
 ##########################################################
