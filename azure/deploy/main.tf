@@ -55,7 +55,7 @@ module "network" {
   user1_subnet_name   = var.user1_subnet_name
   user1_subnet_prefix = var.user1_subnet_prefix
 }
-resource "azurerm_resource_group" "myresourcegroup" {
+resource "azurerm_resource_group" "labvm-617678" {
   name     = "labvm-617678"
   location = "centralus"
 }
