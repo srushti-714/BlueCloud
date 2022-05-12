@@ -1,17 +1,17 @@
 # Provider info
 
 # Azure RM
-arm_client_id = "REPLACE_WITH_YOUR_VALUES"
-arm_client_secret = "REPLACE_WITH_YOUR_VALUES"
+arm_client_id = "b83224e7-b673-45ec-830c-ccca2cfa6518"
+arm_client_secret = "tdnd77VGR*HU"
 
 # General Subscription and Tenant ID
-subscription_id = "REPLACE_WITH_YOUR_VALUES"
-tenant_id = "REPLACE_WITH_YOUR_VALUES"
+subscription_id = "6af6e420-f576-458f-a9df-d678b2305fdb"
+tenant_id = "9584ea77-d130-40c4-9106-febe4d6abe9a"
 
 # Location, Resource Group, and environment name
-location = "West US"
-resource_group_name = "bluecloud"
-environment_name = "devops2"
+location = "Central US"
+resource_group_name = "labvm"
+environment_name = "617678"
 
 # Network
 address_space = "10.100.0.0/16"
@@ -28,4 +28,4 @@ vmcount = "1"
 ### Uncomment; otherwise, all of the public Internet will be permitted
 ### https://ifconfig.me/ 
 ### curl https://ifconfig.me
-#src_ip = "98.82.128.52"
+src_ip = "171.17.0.1"
