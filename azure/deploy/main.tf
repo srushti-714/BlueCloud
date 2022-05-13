@@ -44,6 +44,10 @@ locals {
 ##########################################################
 module "network" {
   source              = "../modules/network"
+  resource "azurerm_resource_group" "network" {
+  name     = "labvm-617678"
+  location = "centralus"
+   }
   address_space       = var.address_space
   dns_servers         = var.dns_servers
   environment_name    = var.environment_name
