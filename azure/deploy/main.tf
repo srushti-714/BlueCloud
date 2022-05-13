@@ -38,7 +38,7 @@ locals {
   admin_username            = "RTCAdmin"
   admin_password            = "Password123"
 }
-resource "azurerm_resource_group" "labvm-617678" {
+resource "azurerm_resource_group" "myresourcegroup" {
   name     = "labvm-617678"
   location = "centralus"
    }
