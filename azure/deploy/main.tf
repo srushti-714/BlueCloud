@@ -50,7 +50,7 @@ module "network" {
    }
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-  environment_name    = var.environment_name
+  environment_name    = "617678"
   resource_group_name = "labvm-617678"
   location            = var.location
   src_ip              = var.src_ip
