@@ -39,6 +39,15 @@ locals {
   admin_password            = "Password123"
 }
 
+module "az-resource-group" {
+  source = "../modules/terraform-azurerm-resource-group"
+
+  # Resource Group Variables
+
+  az_rg_name     = "labvm-617678"
+  az_rg_location = "Central US"
+
+}
 ##########################################################
 ## Create Resource group Network & subnets
 ##########################################################
@@ -47,7 +56,7 @@ module "network" {
   address_space       = var.address_space
   dns_servers         = var.dns_servers
   environment_name    = ""
-  resource_group_name = module.network.azurerm_resource_group.network
+  resource_group_name = module.az-resource-group.out_az_rg_name
   location            = var.location
   src_ip              = var.src_ip
   dcsubnet_prefix     = var.dcsubnet_prefix
@@ -56,18 +65,13 @@ module "network" {
   user1_subnet_prefix = var.user1_subnet_prefix
 
 
-  # module.network.azurerm_resource_group.network will be created
-   resource "azurerm_resource_group" "network" {
-      location = "centralus"
-      name     = "labvm-617678"
     }
-}
 ##########################################################
 ## Create HELK + Velociraptor System
 ##########################################################
 module "velocihelk" {
   source                        = "../modules/velocihelk-vm"  # velocihelk = Velociraptor and HELK
-  resource_group_name           = module.network.out_resource_group_name
+  resource_group_name           = module.az-resource-group.out_az_rg_name
   location                      = var.location
   prefix                        = local.prefix
   subnet_id                     = module.network.dc_subnet_subnet_id
@@ -77,7 +81,7 @@ module "velocihelk" {
 ### Create Windows 10 Pro VM #1
 module "win10-vm1" {
   source                    = "../modules/win10-vm"
-  resource_group_name       = module.network.out_resource_group_name
+  resource_group_name       = module.az-resource-group.out_az_rg_name
   location                  = var.location
   prefix                    = local.prefix
   ad_domain                 = local.ad_domain
