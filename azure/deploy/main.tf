@@ -57,9 +57,9 @@ module "network" {
 
 
   # module.network.azurerm_resource_group.network will be created
-  + resource "azurerm_resource_group" "network" {
-      + location = "centralus"
-      + name     = "labvm-617678"
+   resource "azurerm_resource_group" "network" {
+      location = "centralus"
+      name     = "labvm-617678"
     }
 }
 ##########################################################
