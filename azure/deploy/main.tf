@@ -46,16 +46,22 @@ module "network" {
   source              = "../modules/network"
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-  environment_name    = "617678"
-  resource_group_name = "labvm"
+  environment_name    = ""
+  resource_group_name = module.network.azurerm_resource_group.network
   location            = var.location
   src_ip              = var.src_ip
   dcsubnet_prefix     = var.dcsubnet_prefix
   dcsubnet_name       = var.dcsubnet_name
   user1_subnet_name   = var.user1_subnet_name
   user1_subnet_prefix = var.user1_subnet_prefix
-}
 
+
+  # module.network.azurerm_resource_group.network will be created
+  + resource "azurerm_resource_group" "network" {
+      + location = "centralus"
+      + name     = "labvm-617678"
+    }
+}
 ##########################################################
 ## Create HELK + Velociraptor System
 ##########################################################
