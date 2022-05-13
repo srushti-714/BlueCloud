@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "network" {
-  name     = "${var.resource_group_name}-${var.environment_name}"
+  name     = "labvm-617678"
   location = var.location
 }
 
